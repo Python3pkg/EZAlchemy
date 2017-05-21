@@ -43,7 +43,7 @@ class EZAlchemy(object):
         if table_list:
             table_names = table_list
         else:
-            table_names = self.metadata.tables.keys()
+            table_names = list(self.metadata.tables.keys())
         for tablename in table_names:
             # dynamically define new Table classes
             self._bind_table(tablename)
@@ -81,6 +81,6 @@ class EZAlchemy(object):
             self.session.commit()
             return True
         except Exception as e:
-            print("Error: {}".format(e))
+            print(("Error: {}".format(e)))
             raise
         return False
